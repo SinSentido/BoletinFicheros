@@ -11,6 +11,8 @@ public class Ejercicio2 {
         File fichero3 = new File(directorio, "fichero3.txt");
         File subdirectorio = new File(directorio, "subdirectorio");
         File ficheroSubdirectorio = new File(subdirectorio, "ficheroSub.txt");
+        File[] contenidoDirectorio;
+        File[] contenidoSubdirectorio;
 
         directorio.mkdir();
         try {
@@ -29,6 +31,25 @@ public class Ejercicio2 {
             ficheroSubdirectorio.createNewFile();
         }catch(IOException e){
             e.printStackTrace();
+        }
+
+        contenidoDirectorio = directorio.listFiles();
+
+        System.out.printf("Ruta: %s%n" +
+                "Nombre: %s%n%n", directorio.getAbsolutePath(), directorio.getName());
+
+        for(int i=0; i<contenidoDirectorio.length; i++){
+            System.out.printf("Ruta: %s%n" +
+                    "Nombre: %s%n%n", contenidoDirectorio[i].getAbsolutePath(), contenidoDirectorio[i].getName());
+
+            if(contenidoDirectorio[i].isDirectory()){
+                contenidoSubdirectorio = contenidoDirectorio[i].listFiles();
+                for(int j=0; j<contenidoSubdirectorio.length; j++){
+                    System.out.printf("Ruta: %s%n" +
+                            "Nombre: %s%n%n", contenidoSubdirectorio[j].getAbsolutePath(),
+                            contenidoSubdirectorio[j].getName());
+                }
+            }
         }
     }
 }

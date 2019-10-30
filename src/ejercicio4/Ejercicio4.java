@@ -15,7 +15,7 @@ public class Ejercicio4 {
         System.out.println("Indica la extensión del archivo que quieres buscar:");
         extension = kbd.nextLine();
 
-        File dir = new File(".", directorio);
+        File dir = new File(directorio);
         ficheros = dir.list();
 
         for(int i=0; i<ficheros.length; i++){
